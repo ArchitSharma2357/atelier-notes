@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-porcelain font-body text-ink antialiased;
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0)),
+      linear-gradient(180deg, rgba(223, 208, 189, 0.16), rgba(246, 241, 232, 1) 28%);
+  }
+
+  ::selection {
+    background: rgba(155, 108, 69, 0.22);
+    color: #231d18;
+  }
+
+  * {
+    @apply border-sand;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-frame {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+
+  .page-section {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-container {
+    @apply page-shell page-section;
+  }
+
+  .glass-panel {
+    @apply border border-white/60 bg-white/70 backdrop-blur-xl;
+  }
+
+  .section-title {
+    @apply font-display text-4xl leading-none tracking-tight text-ink sm:text-5xl;
+  }
+
+  .section-copy {
+    @apply max-w-2xl text-sm leading-7 text-stone sm:text-[15px];
+  }
+
+  .pill-button {
+    @apply inline-flex items-center justify-center border border-ink bg-ink px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-ivory transition duration-300;
+  }
+
+  .paper-card {
+    @apply border border-black/10 bg-gradient-to-br from-white to-[#f3eadf] shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-float;
+  }
+
+  .soft-ring {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.78), 0 18px 45px rgba(35, 29, 24, 0.08);
+  }
+
+  .editorial-panel {
+    @apply border border-black/10 bg-white/78 shadow-card backdrop-blur-sm;
+  }
+
+  .grain-overlay {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .grain-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(rgba(35, 29, 24, 0.04) 0.7px, transparent 0.7px),
+      radial-gradient(rgba(255, 255, 255, 0.55) 0.7px, transparent 0.7px);
+    background-position: 0 0, 14px 14px;
+    background-size: 28px 28px;
+    opacity: 0.32;
+    mix-blend-mode: multiply;
+  }
+
+  @keyframes enter {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes leave {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(10px); opacity: 0; }
+  }
+
+  .animate-enter {
+    animation: enter 0.2s ease-out;
+  }
+
+  .animate-leave {
+    animation: leave 0.1s ease-in forwards;
+  }
+}
